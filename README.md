@@ -1,6 +1,6 @@
 # Context as Code ⏺️ 
 
-Proof of concept building an entire project from scratch
+Proof of concept building an entire project from LLM prompts
 
 ## 🛠️ Tech Stack
 
