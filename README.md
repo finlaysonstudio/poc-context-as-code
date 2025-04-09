@@ -12,7 +12,7 @@ Proof of concept building an entire project from scratch
 ### #1 Bootstrap as much as possible in a single prompt
 
 ```sh
-aider --read prompts/lib/Start_TypeScript_Project.md --message-file prompts/changelog/2025_04_08_2111_43610_start_project
+aider --read context/prompts/Start_TypeScript_Project.md --message-file context/changelog/2025_04_08_2111_43610_start_project
 ```
 
 ## 🚦 Parking Lot
