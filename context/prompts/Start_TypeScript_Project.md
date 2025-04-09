@@ -172,48 +172,20 @@ EOF
     npm install
     ```
 
-## 🚀 Working with Your Project
+13. **Run build**:
+    ```bash
+    # Build all packages
+    npm run build
+    ```
 
-Now that your project is set up, here are some common commands you'll use:
+14. **Run lint**:
+    ```bash
+    # Lint all packages
+    npm run lint
+    ```
 
-### Building the project
-```bash
-# Build all packages
-npm run build
-
-# Build a specific package
-npm -w packages/<package-folder> run build
-```
-
-### Running tests
-```bash
-# Run tests for all packages
-npm run test
-
-# Run tests for a specific package
-npm -w packages/<package-folder> run test
-
-# Run tests in watch mode
-npm -w packages/<package-folder> run test:watch
-```
-
-### Linting code
-```bash
-# Lint all packages
-npm run lint
-
-# Lint a specific package
-npm -w packages/<package-folder> run lint
-```
-
-### Type checking
-```bash
-# Run type checking for a specific package
-npm -w packages/<package-folder> run typecheck
-```
-
-### Formatting code
-```bash
-# Format all code
-npm run format
-```
+15. **Run tests**:
+    ```bash
+    # Run tests for all packages
+    npm run test
+    ```
