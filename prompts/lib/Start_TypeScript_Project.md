@@ -57,9 +57,10 @@ Start by clarifying with the user:
    # Install Vitest for testing
    npm install -D vitest@latest
    
-   # Install ESLint and Prettier
-   npm install -D eslint@latest prettier@latest eslint-config-prettier@latest
+   # Install ESLint 9 and Prettier
+   npm install -D eslint@9 prettier@latest eslint-config-prettier@latest
    npm install -D @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest
+   npm install -D eslint-plugin-prettier@latest
    ```
 
 6. **Create TypeScript configuration**:
@@ -70,11 +71,41 @@ Start by clarifying with the user:
 
 7. **Set up ESLint and Prettier**:
    ```bash
-   # Initialize ESLint
-   npx eslint --init
-   
-   # Create Prettier config
-   echo '{ "semi": true, "singleQuote": true, "tabWidth": 2, "trailingComma": "es5" }' > .prettierrc
+   # Create ESLint config with Prettier integration using flat config
+   echo 'import tseslint from "typescript-eslint";
+import prettierConfig from "eslint-config-prettier";
+import prettierPlugin from "eslint-plugin-prettier";
+
+export default tseslint.config(
+  {
+    ignores: ["dist", "node_modules"],
+  },
+  {
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      parser: tseslint.parser,
+      parserOptions: {
+        project: true,
+      },
+    },
+    plugins: {
+      "@typescript-eslint": tseslint.plugin,
+      prettier: prettierPlugin,
+    },
+    rules: {
+      ...tseslint.configs.recommended.rules,
+      ...prettierPlugin.configs.recommended.rules,
+      "prettier/prettier": ["error", {
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5"
+      }]
+    }
+  },
+  prettierConfig
+);' > eslint.config.js
    ```
 
 8. **Create Vite configuration**:
@@ -84,7 +115,44 @@ Start by clarifying with the user:
    ```
 
 9. **Set up package scripts**:
-   - Add build, test, lint scripts to package.json
+   ```bash
+   # Update root package.json scripts
+   cat > package.json << EOF
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  }
+}
+EOF
+
+   # Update package-specific package.json scripts
+   cat > packages/<package-folder>/package.json << EOF
+{
+  "name": "your-package-name",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit"
+  }
+}
+EOF
+   ```
+
+   Note: Replace `your-project-name` and `your-package-name` with the actual names.
 
 10. **Create initial source files**:
     ```bash
@@ -97,11 +165,3 @@ Start by clarifying with the user:
     mkdir -p packages/<package-folder>/tests
     touch packages/<package-folder>/tests/index.test.ts
     ```
-
-## 📌 Remember
-
-### Output Results
-
-When you are done, output results to the user. 
-Also write the results to the output file, if one was provided.
-If an output file was provided, in one or two sentences, describe what you think the user's idea is based on the name and whether it will work.
