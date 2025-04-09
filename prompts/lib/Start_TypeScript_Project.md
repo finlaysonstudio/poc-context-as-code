@@ -165,3 +165,55 @@ EOF
     mkdir -p packages/<package-folder>/tests
     touch packages/<package-folder>/tests/index.test.ts
     ```
+
+12. **Install all dependencies**:
+    After setting up the project structure, install all dependencies with:
+    ```bash
+    npm install
+    ```
+
+## 🚀 Working with Your Project
+
+Now that your project is set up, here are some common commands you'll use:
+
+### Building the project
+```bash
+# Build all packages
+npm run build
+
+# Build a specific package
+npm -w packages/<package-folder> run build
+```
+
+### Running tests
+```bash
+# Run tests for all packages
+npm run test
+
+# Run tests for a specific package
+npm -w packages/<package-folder> run test
+
+# Run tests in watch mode
+npm -w packages/<package-folder> run test:watch
+```
+
+### Linting code
+```bash
+# Lint all packages
+npm run lint
+
+# Lint a specific package
+npm -w packages/<package-folder> run lint
+```
+
+### Type checking
+```bash
+# Run type checking for a specific package
+npm -w packages/<package-folder> run typecheck
+```
+
+### Formatting code
+```bash
+# Format all code
+npm run format
+```
