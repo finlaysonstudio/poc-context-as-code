@@ -10,40 +10,44 @@ You will assist setting up a new TypeScript project for the user
 * Vite to bundle TypeScript
 * Vitest
 
-## ℹ️ Initial Questions
+## 📋 Suggested Process
 
-Start by clarifying with the user:
+### Clarify
+
+1. Start by clarifying with the user:
 
 * What is the name of the top-level package? (suggest one from the folder name)
 * What is the name of the first package's folder? (suggest cli)
 * What is the name of the first package? (suggest a logical mashup of top-level and first package; "my-project" and "cli" would be "my-project-cli", but "@orgproject/monorepo" might be "@orgproject/cli")
 * Make note of any answers in your output file is available
 
-## 📋 Suggested Process
+### Setup 🏗️
 
-1. **Initialize the project structure**:
+2. **Initialize the project structure**:
    ```bash
    # Create the project directory if it doesn't exist
    mkdir -p packages/<package-folder>
    ```
 
-2. **Initialize the root package.json**:
+3. **Initialize the root package.json**:
    ```bash
    # Initialize the root package.json with workspaces
    npm init -y
    ```
 
-3. **Configure workspaces in root package.json**:
+4. **Configure workspaces in root package.json**:
    - Add `"workspaces": ["packages/*"]` to package.json
    - Set `"private": true` to prevent accidental publishing
 
-4. **Initialize the first package**:
+5. **Initialize the first package**:
    ```bash
    cd packages/<package-folder>
    npm init -y
    ```
 
-5. **Install TypeScript and core dependencies**:
+### Install 💿
+
+6. **Install TypeScript and core dependencies**:
    ```bash
    # Return to root directory
    cd ../..
@@ -63,13 +67,47 @@ Start by clarifying with the user:
    npm install -D eslint-plugin-prettier@latest
    ```
 
-6. **Create TypeScript configuration**:
+### ⚙️ Configure
+
+7. **Create TypeScript configuration**:
    ```bash
-   # Generate tsconfig.json
+   # Generate root tsconfig.json
    npx tsc --init
    ```
 
-7. **Set up ESLint and Prettier**:
+8. **Configure TypeScript for monorepo**:
+   ```bash
+   # Update root tsconfig.json to be the base configuration
+   cat > tsconfig.json << EOF
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "rootDir": "."
+  },
+  "exclude": ["node_modules", "dist"]
+}
+EOF
+
+   # Create package-specific tsconfig.json that extends the root
+   cat > packages/<package-folder>/tsconfig.json << EOF
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"]
+}
+EOF
+   ```
+
+9. **Set up ESLint and Prettier**:
    ```bash
    # Create ESLint config with Prettier integration using flat config
    echo 'import tseslint from "typescript-eslint";
@@ -108,13 +146,13 @@ export default tseslint.config(
 );' > eslint.config.js
    ```
 
-8. **Create Vite configuration**:
+10. **Create Vite configuration**:
    ```bash
    # Create vite.config.ts
    touch vite.config.ts
    ```
 
-9. **Set up package scripts**:
+11. **Set up package scripts**:
    ```bash
    # Update root package.json scripts
    cat > package.json << EOF
@@ -154,37 +192,41 @@ EOF
 
    Note: Replace `your-project-name` and `your-package-name` with the actual names.
 
-10. **Create initial source files**:
+### Initialize 🚀
+
+12. **Create initial source files**:
     ```bash
     mkdir -p packages/<package-folder>/src
     touch packages/<package-folder>/src/index.ts
     ```
 
-11. **Create test files**:
+13. **Create test files**:
     ```bash
     mkdir -p packages/<package-folder>/tests
     touch packages/<package-folder>/tests/index.test.ts
     ```
 
-12. **Install all dependencies**:
+14. **Install all dependencies**:
     After setting up the project structure, install all dependencies with:
     ```bash
     npm install
     ```
 
-13. **Run build**:
+### Test 🧪
+
+15. **Run build**:
     ```bash
     # Build all packages
     npm run build
     ```
 
-14. **Run lint**:
+16. **Run lint**:
     ```bash
     # Lint all packages
     npm run lint
     ```
 
-15. **Run tests**:
+16. **Run tests**:
     ```bash
     # Run tests for all packages
     npm run test
