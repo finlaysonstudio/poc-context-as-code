@@ -9,11 +9,32 @@ Proof of concept building an entire project from LLM prompts
 
 ## 📋 Process
 
-### #1 Bootstrap as much as possible in a single prompt
+### Flywheel
+
+> 🚧
+
+### Initial Setup
+
+#### #1 Bootstrap as much as possible in a single prompt
 
 ```sh
 aider --read context/prompts/Start_TypeScript_Project.md --message-file context/changelog/2025_04_08_2111_43610_start_project
 ```
+
+See [Start TypeScript Project](context/prompts/Start_TypeScript_Project.md) and [Start Project Changelog](context/changelog/2025_04_08_2111_43610_start_project)
+
+#### Manual Tweaks
+
+To align with [Ideal Project Structure](context/prompts/Ideal_Project_Structure.md).
+Future prompts can incorporate this.
+
+#### #2 Create a script to create a changelog request
+
+```sh
+aider --message-file context/changelog/2025_04_09_2219_39583_new_changelog_script.md
+```
+
+See [New Changelog Script](context/changelog/2025_04_09_2219_39583_new_changelog_script.md)
 
 ## 🚦 Parking Lot
 
