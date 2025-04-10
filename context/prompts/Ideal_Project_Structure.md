@@ -41,6 +41,10 @@ Setup Steps
 * Missing inits: .gitignore, dictionary
 * bin:change / new:change
 
+Testing
+
+* Tests side-by-side or in subdirectory?
+
 Utilities
 
 * rimraf
