@@ -45,3 +45,4 @@ Utilities
 
 * rimraf
 * sort-package-json
+* tsx
