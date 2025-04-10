@@ -215,19 +215,19 @@ EOF
 ### Test 🧪
 
 15. **Run build**:
+    Ensure the packages build
     ```bash
-    # Build all packages
     npm run build
     ```
 
 16. **Run lint**:
+    Ensure the packages lint
     ```bash
-    # Lint all packages
     npm run lint
     ```
 
 16. **Run tests**:
+    Ensure the tests pass
     ```bash
-    # Run tests for all packages
     npm run test
     ```
