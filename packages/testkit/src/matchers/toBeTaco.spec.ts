@@ -35,4 +35,30 @@ describe("toBeTaco matcher", () => {
     const matcherResult = toBeTaco.call({ isNot: false }, 123);
     expect(matcherResult.pass).toBe(false);
   });
+
+  it("should support .not negation for taco strings", () => {
+    expect(() => expect("taco").not.toBeTaco()).toThrow();
+    expect(() => expect("I love tacos").not.toBeTaco()).toThrow();
+    expect(() => expect("🌮").not.toBeTaco()).toThrow();
+  });
+
+  it("should support .not negation for non-taco strings", () => {
+    expect("burrito").not.toBeTaco();
+    expect("hamburger").not.toBeTaco();
+    expect("🍔").not.toBeTaco();
+  });
+
+  it("should provide correct messages for .not assertions", () => {
+    const matcherResult = toBeTaco.call({ isNot: true }, "taco");
+    expect(matcherResult.pass).toBe(true);
+    expect(matcherResult.message()).toContain(
+      'not to contain "taco" or 🌮, but it does',
+    );
+
+    const nonTacoResult = toBeTaco.call({ isNot: true }, "burrito");
+    expect(nonTacoResult.pass).toBe(false);
+    expect(nonTacoResult.message()).toContain(
+      'to contain "taco" or 🌮, but it doesn\'t',
+    );
+  });
 });
