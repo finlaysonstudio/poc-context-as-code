@@ -31,6 +31,8 @@ aider --read context/lib/jaypie/Jaypie_Add_Vitest_Tests.md --message-file ./cont
 
 #### Configuration
 
+`~/.aider.conf.yml`
+
 ```yml
 anthropic-api-key: sk-ant-api03-…
 # architect: false
