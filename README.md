@@ -2,12 +2,21 @@
 
 Proof of concept building an entire project from LLM prompts
 
-## 🛠️ Tech Stack
+## ✈️ Overview
+
+* The developer writes markdown prompts for each change request in `context/changelog`
+* Additional context such as guides (`context/prompts`) or external documentation (`context/lib`) can be linked from the original prompt
+* Code generator attempts solution
+* Accepted solutions are committed with the context
+* Rejected solutions are rolled back and re-attempted with an updated prompt.
+* NO SECOND TURNS
+
+### Tech Stack
 
 * Aider
 * Markdown
 
-## 🎡 Flywheel
+## 🎡 Workflow
 
 1. Create changelog file
   ```sh
