@@ -7,11 +7,19 @@ Proof of concept building an entire project from LLM prompts
 * Aider
 * Markdown
 
-## 📋 Process
+## 🎡 Flywheel
 
-### Flywheel
+1. Create changelog file
+  ```
+  npm run new:change
+  ```
+2. Write changelog entry
+3. Provide LLM changelog, any additional context
+  ```
+  aider --message-file ./context/changelog/<entry>
+  ```
 
-> 🚧
+## 📎 Appendix
 
 ### Initial Setup
 
@@ -41,13 +49,13 @@ See:
 * [Changelog Script: Prompt Empty](context/changelog/2025_04_09_2231_45955_changelog_script:_prompt_empty.md)
 * [NPM Script for Changelog](context/changelog/2025_04_09_2240_35193_npm_script_for_changelog.md)
 
-## 🚦 Parking Lot
+### Aider
 
-### Observations
+#### Observations
 
 Aider is better (more independent) in "code" than "architect" mode.
 
-### Aider Reference
+####  Reference
 
 ```sh
 aider --watch
@@ -56,6 +64,10 @@ aider --read this --read that --file target
 
 aider --message "does this and quits"
 ```
+
+## 🚦 Parking Lot
+
+* Can aider run with auto-accept? Should it 😅
 
 ## 📜 License
 
