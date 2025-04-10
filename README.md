@@ -73,10 +73,10 @@ _I would try to make it all one command next time!_
 #### #1 Bootstrapped as much as possible in a single prompt
 
 ```sh
-aider --read context/prompts/Start_TypeScript_Project.md --message-file context/changelog/2025_04_08_2111_43610_start_project
+aider --read context/prompts/Start_TypeScript_Project.md --message-file context/changelog/2025_04_08_2111_43610_start_project.md
 ```
 
-See [Start TypeScript Project](context/prompts/Start_TypeScript_Project.md) and [Start Project Changelog](context/changelog/2025_04_08_2111_43610_start_project)
+See [Start TypeScript Project](context/prompts/Start_TypeScript_Project.md) and [Start Project Changelog](context/changelog/2025_04_08_2111_43610_start_project.md)
 
 #### Manual Tweaks
 
