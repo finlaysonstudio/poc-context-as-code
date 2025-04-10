@@ -1,3 +1,7 @@
+---
+// From https://github.com/Aider-AI/conventions/blob/main/functional-programming/CONVENTIONS.md
+---
+
 When writing code, you MUST follow these principles:
 
 Code should be easy to read and understand.
