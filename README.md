@@ -10,14 +10,20 @@ Proof of concept building an entire project from LLM prompts
 ## 🎡 Flywheel
 
 1. Create changelog file
-  ```
+  ```sh
   npm run new:change
   ```
-2. Write changelog entry
+2. Write changelog entry in the created file
 3. Provide LLM changelog, any additional context
-  ```
+  ```sh
   aider --message-file ./context/changelog/<entry>
   ```
+
+Additional context can be passed on the command line or linked from the changelog.
+
+```sh
+aider --read context/lib/jaypie/Jaypie_Add_Vitest_Tests.md --message-file ./context/changelog/<entry>
+```
 
 ## 📎 Appendix
 
@@ -51,6 +57,26 @@ See:
 
 ### Aider
 
+#### Configuration
+
+```yml
+anthropic-api-key: sk-ant-api03-…
+# architect: false
+auto-commits: false
+# auto-lint: true
+auto-test: true
+# git: true
+lint-cmd: npm run format
+llm-history-file: .aider.llm.history
+openai-api-key: sk-proj-…
+read: [.aider.user.md, context/lib/jaypie/Jaypie_Project_Style_and_Conventions.md]
+test-cmd: npm run test
+watch-files: true
+yes-always: true
+```
+
+_Some of these choices reflect defaults I was experimenting with_
+
 #### Observations
 
 Aider is better (more independent) in "code" than "architect" mode.
@@ -64,10 +90,6 @@ aider --read this --read that --file target
 
 aider --message "does this and quits"
 ```
-
-## 🚦 Parking Lot
-
-* Can aider run with auto-accept? Should it 😅
 
 ## 📜 License
 
