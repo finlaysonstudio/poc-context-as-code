@@ -7,10 +7,12 @@
     "packages/*"
   ],
   "scripts": {
+    "bin:changelog": "tsx context/bin/new-changelog.ts",
     "build": "npm run build --workspaces",
     "clean": "npm run clean --workspaces",
     "format": "eslint --fix .",
     "lint": "eslint .",
+    "new:change": "npm run bin:changelog",
     "test:watch": "vitest watch",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"

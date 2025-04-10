@@ -33,9 +33,13 @@ Future prompts can incorporate this.
 ```sh
 aider --message-file context/changelog/2025_04_09_2219_39583_new_changelog_script.md
 aider --message-file context/changelog/2025_04_09_2231_45955_changelog_script:_prompt_empty.md
+aider --message-file context/changelog/2025_04_09_2240_35193_npm_script_for_changelog.md
 ```
 
-See [New Changelog Script](context/changelog/2025_04_09_2219_39583_new_changelog_script.md)
+See:
+* [New Changelog Script](context/changelog/2025_04_09_2219_39583_new_changelog_script.md)
+* [Changelog Script: Prompt Empty](context/changelog/2025_04_09_2231_45955_changelog_script:_prompt_empty.md)
+* [NPM Script for Changelog](context/changelog/2025_04_09_2240_35193_npm_script_for_changelog.md)
 
 ## 🚦 Parking Lot
 
