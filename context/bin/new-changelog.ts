@@ -5,6 +5,7 @@
  */
 import * as fs from "fs";
 import * as path from "path";
+import * as readline from "readline";
 
 /**
  * Creates a filesystem-friendly version of a message
@@ -36,16 +37,40 @@ function generateTimestamp(): string {
 }
 
 /**
+ * Prompts the user for input
+ * @param question The question to ask
+ * @returns Promise that resolves with the user's input
+ */
+function promptUser(question: string): Promise<string> {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  return new Promise((resolve) => {
+    rl.question(question, (answer) => {
+      rl.close();
+      resolve(answer);
+    });
+  });
+}
+
+/**
  * Main function to create a new changelog file
  */
 async function main(): Promise<void> {
   try {
     // Get all arguments after the script name and join them as a single message
-    const message = process.argv.slice(2).join(" ");
+    let message = process.argv.slice(2).join(" ");
 
+    // If no message was provided, prompt the user for one
     if (!message) {
-      console.error("Error: Please provide a message");
-      process.exit(1);
+      message = await promptUser("Message for changelog? ");
+
+      if (!message) {
+        console.error("Error: A message is required");
+        process.exit(1);
+      }
     }
 
     const timestamp = generateTimestamp();
