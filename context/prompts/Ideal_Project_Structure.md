@@ -1,10 +1,25 @@
 # Ideal Project Structure 🏆
 
+Specification for an ideal project structure
+
+## ✈️ Overview
+
+* ESLint + Prettier
+* NPM with Workspaces ("monorepo")
+* TypeScript
+* Vite
+* Vitest
+
 ## 🚦 Parking Lot
+
+Jaypie
+
+* Linting
 
 NPM Scripts
 
 | Script | Top-level | Sub-packages | Root-level |
+| ------ | --------- | ------------ | ---------- |
 | `build` | `npm run build --workspaces` | `vite build && tsc --emitDeclarationOnly` | N/A |
 | `clean` | `npm run clean --workspaces && npm run clean:root` | `rimfaf dist` | `clean:root` |
 | `format` | `eslint --fix .` | `eslint --fix .` | N/A |
@@ -18,3 +33,15 @@ NPM Dev Dependencies
 
 * eslint - root
 * vitest - root
+
+Setup Steps
+
+* Install rimraf
+* Customize scripts
+* Missing inits: .gitignore, dictionary
+* bin:change / new:change
+
+Utilities
+
+* rimraf
+* sort-package-json
