@@ -18,7 +18,7 @@
 ## Testing
 
 * If a test produces an artifact, clean up by deleting artifacts
-* See [Add Vitest Tests](./Jaypie_Add_Vitest_Tests.md)
+* See [Add Vitest Tests](./Add_Vitest_Tests.md)
 
 ## Writing
 
