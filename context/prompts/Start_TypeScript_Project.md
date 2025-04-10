@@ -160,6 +160,7 @@ export default tseslint.config(
   "name": "your-project-name",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
@@ -179,6 +180,7 @@ EOF
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "vite build",
     "test": "vitest run",
