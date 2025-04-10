@@ -8,9 +8,12 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
-    "lint": "npm run lint --workspaces",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "clean": "npm run clean --workspaces",
+    "format": "eslint --fix .",
+    "lint": "eslint .",
+    "test:watch": "vitest watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
