@@ -17,6 +17,10 @@ aider --read context/prompts/Start_TypeScript_Project.md --message-file context/
 
 ## 🚦 Parking Lot
 
+### Observations
+
+Aider is better (more independent) in "code" than "architect" mode.
+
 ### Aider Reference
 
 ```sh
