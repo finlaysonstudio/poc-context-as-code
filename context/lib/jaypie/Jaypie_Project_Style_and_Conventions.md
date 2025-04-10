@@ -6,6 +6,10 @@
 * Disallow CommonJS require.
 * ESLint uses Prettier with double-quotes.
 
+## Monorepos
+
+* Add new packages to vitest.workspace.js on the top-level if it is not using the glob syntax.
+
 ## Scripts
 
 * Local utilities should be written in TypeScript, executable with tsx
