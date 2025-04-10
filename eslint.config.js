@@ -1,34 +1,34 @@
-import tseslint from 'typescript-eslint';
-import prettierConfig from 'eslint-config-prettier';
-import prettierPlugin from 'eslint-plugin-prettier';
+import tseslint from "typescript-eslint";
+import prettierConfig from "eslint-config-prettier";
+import prettierPlugin from "eslint-plugin-prettier";
 
 export default tseslint.config(
   {
-    ignores: ['dist', 'node_modules'],
+    ignores: ["dist", "node_modules"],
   },
   {
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+      ecmaVersion: "latest",
+      sourceType: "module",
       parser: tseslint.parser,
       parserOptions: {
         project: true,
       },
     },
     plugins: {
-      '@typescript-eslint': tseslint.plugin,
+      "@typescript-eslint": tseslint.plugin,
       prettier: prettierPlugin,
     },
     rules: {
       ...tseslint.configs.recommended.rules,
       ...prettierPlugin.configs.recommended.rules,
-      'prettier/prettier': [
-        'error',
+      "prettier/prettier": [
+        "error",
         {
           semi: true,
-          singleQuote: true,
+          singleQuote: false,
           tabWidth: 2,
-          trailingComma: 'es5',
+          trailingComma: "es5",
         },
       ],
     },
