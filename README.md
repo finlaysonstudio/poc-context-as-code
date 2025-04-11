@@ -52,7 +52,7 @@ auto-test: true
 lint-cmd: npm run format
 llm-history-file: .aider.llm.history
 openai-api-key: sk-proj-…
-read: [.aider.user.md, context/lib/jaypie/Jaypie_Project_Style_and_Conventions.md]
+read: [.aider.user.md, context/prompts/Project_Style_and_Conventions.md]
 test-cmd: npm run test
 watch-files: true
 yes-always: true
