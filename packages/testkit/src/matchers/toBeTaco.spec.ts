@@ -1,13 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { toBeTaco } from "./toBeTaco";
 
-// Add the custom matcher to Jest/Vitest
-declare module "vitest" {
-  interface Assertion {
-    toBeTaco(): void;
-  }
-}
-
 describe("toBeTaco matcher", () => {
   beforeEach(() => {
     expect.extend({ toBeTaco });
