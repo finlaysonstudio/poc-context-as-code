@@ -1,1 +1,4 @@
-// This file left intentionally blank
+import { expect } from "vitest";
+import { toBeTaco } from "@jaypie/testkit";
+
+expect.extend({ toBeTaco });

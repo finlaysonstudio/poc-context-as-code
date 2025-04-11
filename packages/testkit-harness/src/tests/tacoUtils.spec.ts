@@ -1,25 +1,11 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect } from "vitest";
 import {
   containsTaco,
   addTacoIfMissing,
   removeTacoReferences,
 } from "../tacoUtils";
-// Import directly from the source file to avoid module resolution issues
-import { toBeTaco } from "@jaypie/testkit";
-
-// Add the custom matcher to Jest/Vitest
-declare module "vitest" {
-  interface Assertion {
-    toBeTaco(): void;
-  }
-}
 
 describe("Taco Utilities", () => {
-  // Set up the custom matcher
-  beforeEach(() => {
-    expect.extend({ toBeTaco });
-  });
-
   describe("containsTaco", () => {
     it('should return true for strings containing "taco"', () => {
       expect(containsTaco("taco")).toBe(true);
