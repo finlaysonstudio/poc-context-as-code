@@ -1,4 +1,4 @@
-# Context as Code ⏺️ 
+# Context as Code ⏺️
 
 Proof of concept building an entire project from LLM prompts
 
@@ -49,11 +49,11 @@ auto-commits: false
 # auto-lint: true
 auto-test: true
 # git: true
-lint-cmd: npm run format
+lint-cmd: eslint --fix
 llm-history-file: .aider.llm.history
 openai-api-key: sk-proj-…
 read: [.aider.user.md, context/prompts/Project_Style_and_Conventions.md]
-test-cmd: npm run test
+test-cmd: vitest run
 watch-files: true
 yes-always: true
 ```
